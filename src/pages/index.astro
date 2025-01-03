@@ -58,7 +58,7 @@ const posts = (await getCollection("posts"))
             <h5 class="font-semibold text-black dark:text-white">
               Latest posts
             </h5>
-            <Link href="/til/posts">
+            <Link href={`${import.meta.env.BASE_URL}posts`}>
               See all posts
             </Link>
           </div>
