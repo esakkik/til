@@ -1,0 +1,14 @@
+---
+import BaseLayout from './BaseLayout.astro';
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout title={frontmatter.title} description='hello postlayout'>
+  <article class="prose lg:prose-xl">
+    <h1>{frontmatter.title}</h1>
+    <p class="text-gray-600">
+      Posted on {new Date(frontmatter.date).toLocaleDateString()}
+    </p>
+    <slot />
+  </article>
+</BaseLayout>
