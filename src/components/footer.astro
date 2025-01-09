@@ -1,0 +1,88 @@
+---
+import MoonIcon from "@images/moon.svg";
+import SunIcon from "@images/sun.svg";
+import ArrowUp from "@images/arrow-line-up.svg";
+const year = new Date().getFullYear();
+const name = "Esakki Krishnan";
+---
+
+<footer class="mt-4 mb-4 animate">
+  <div class="flex justify-end">
+    <button
+      class="secondary flex gap-2 item-center arrow-parent-up mb-2 mt-2"
+      id="btn-scroll-top"
+    >
+      <ArrowUp class="link-arrow link-arrow-up rotate-90" size={20} />
+      <p class="m-0 text-xs">Scroll to Top</p>
+    </button>
+  </div>
+  <div class="flex justify-between items-center">
+    <p>© <span>{year}</span> | <span>{name}</span></p>
+    <button class="flex" id="btn-theme-toogle">
+      <MoonIcon size={"1rem"} id="icn-moon" class="hidden" />
+      <SunIcon size={"1rem"} id="icn-sun" class="hidden" /></button
+    >
+  </div>
+</footer>
+<script is:inline>
+  function footerInit() {
+    const isDarkTheme =
+      document.documentElement.dataset.theme === "dark" ? true : false;
+    setIcon(isDarkTheme);
+    const themeToggleBtn = document.getElementById("btn-theme-toogle");
+    themeToggleBtn.addEventListener("click", toogleTheme);
+    onScroll();
+    document.addEventListener("scroll", onScroll);
+    const scrollToTopBtn = document.getElementById("btn-scroll-top");
+    scrollToTopBtn.addEventListener("click", scrollToTop);
+  }
+
+  function onScroll() {
+    if (window.scrollY > 0) {
+      document.documentElement.classList.add("scrolled");
+    } else {
+      document.documentElement.classList.remove("scrolled");
+    }
+  }
+
+  function scrollToTop(event) {
+    event.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
+
+  function toogleTheme() {
+    const isDarkTheme =
+      document.documentElement.dataset.theme === "dark" ? true : false;
+    const newTheme = isDarkTheme ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", newTheme);
+    setIcon(!isDarkTheme);
+    localStorage.setItem("theme", newTheme);
+  }
+
+  function setIcon(isDark) {
+    console.log("icon setr");
+    const iconMoon = document.getElementById("icn-moon");
+    const iconSun = document.getElementById("icn-sun");
+    if (isDark) {
+      iconMoon.classList.add("hidden");
+      iconSun.classList.remove("hidden");
+    } else {
+      iconSun.classList.add("hidden");
+      iconMoon.classList.remove("hidden");
+    }
+  }
+  document.addEventListener("DOMContentLoaded", () => footerInit());
+  document.addEventListener("astro:after-swap", () => footerInit());
+</script>
+
+<style is:inline>
+  #btn-scroll-top {
+    visibility: hidden;
+  }
+  .scrolled #btn-scroll-top {
+    visibility: visible;
+  }
+</style>

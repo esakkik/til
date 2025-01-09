@@ -1,0 +1,60 @@
+---
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import BaseLayout from "@layouts/base_layout.astro";
+import TilPagination from "@components/til_pagination.astro";
+import { GLOBAL } from "@constant";
+import { readingTime } from "@utils";
+
+export async function getStaticPaths() {
+  const tils = await getCollection("tils");
+  return tils.map((til) => {
+    return {
+      params: { slug: til.data.slug },
+      props: til,
+    };
+  });
+}
+type Props = CollectionEntry<"tils">;
+const til = Astro.props;
+const { Content } = await render(til);
+---
+
+<BaseLayout
+  title={til.data.title}
+  description={til.data.description || GLOBAL.description}
+>
+  <!-- <div class="animate">
+      <!-- <BackToPrev href="/blog">
+        Back to blog
+      </BackToPrev> -->
+
+  <!-- <div class="space-y-1 my-10">
+    <div class="animate flex items-center gap-1.5">
+      <div class="font-base text-sm">
+        <p>{post.data.date}</p>
+      </div>
+      &bull;
+      <div class="font-base text-sm">
+        {readingTime(post.body)}
+      </div>
+    </div> -->
+  <div class="animate text-xl font-semibold pt-3 pb-1">
+    <a href={import.meta.env.BASE_URL}>til</a>/{til.data.title}
+  </div>
+  <div class="flex gap-2 items-center">
+    <p class="text-uppercase">
+      {
+        til.data.date.toLocaleDateString("en-gb", {
+          year: "numeric",
+          month: "short",
+          day: "2-digit",
+        })
+      }
+    </p>
+    &bull;<p>{readingTime(til.body || "")}</p>
+  </div>
+  <article class="animate blog-content">
+    <Content />
+  </article>
+  <TilPagination />
+</BaseLayout>

@@ -1,0 +1,25 @@
+---
+import { Image } from "astro:assets";
+import Logo from "@images/logo-trans.svg";
+import { GLOBAL } from "@constant";
+---
+
+<header class="mt-4 mb-2">
+  <div class="logo">
+    <a href={GLOBAL.siteUrl} class="logo-link">
+      <Logo height="1.5rem" width={"100%"} />
+    </a>
+  </div>
+</header>
+<style is:inline>
+  header {
+    display: flex;
+    justify-content: left;
+  }
+  .logo-link {
+    color: var(--primary-200);
+  }
+  .logo-link:hover {
+    color: var(--primary-200);
+  }
+</style>

@@ -1,0 +1,41 @@
+---
+import Head from "@components/head.astro";
+import Footer from "@components/footer.astro";
+import { GLOBAL } from "@constant";
+import Header from "@components/header.astro";
+
+type Props = {
+  title: string;
+  description: string;
+};
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <Head
+      title={`${title} | ${GLOBAL.title}`}
+      description={`${description} | ${GLOBAL.description}`}
+    />
+  </head>
+  <body class="flex flex-col">
+    <Header />
+    <main class="mb-4 mt-4">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+<style is:inline>
+  html {
+    height: 100%;
+  }
+  body {
+    height: 100%;
+  }
+  main {
+    flex: 1 1 0%;
+  }
+</style>

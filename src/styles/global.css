@@ -1,0 +1,515 @@
+:root {
+  --space-0: 0rem;
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem; /* 8px */
+  --space-3: 1rem; /* 16px */
+  --space-4: 1.5rem; /* 24px */
+  --space-5: 2rem; /* 32px */
+  --space-6: 3rem; /* 48px */
+  --space-7: 4rem; /* 64px */
+
+  --font-ratio: 0.5844907407;
+  --ideal-font-size: calc(66vw / (60 * var(--font-ratio)));
+  --font-size: clamp(14px, var(--ideal-font-size), 18px);
+
+  --font-family-sans: "IBM Plex Sans", "Inter", sans-serif;
+  --font-family-serif: "IBM Plex Serif", "Georgia", serif;
+  --font-family-mono: "IBM Plex Mono", "Courier New", monospace;
+
+  /* Line height based on font size */
+  --line-height: calc(var(--font-size) * 1.5);
+
+  /* Font Sizes */
+  --font-size-xs: 0.75rem; /* 12px */
+  --font-size-sm: 0.865rem; /* 16px */
+  --font-size-md: 1rem; /* 20px */
+  --font-size-lg: 1.25rem; /* 24px */
+  --font-size-xl: 1.5rem; /* 32px */
+  --font-size-xxl: 2rem; /* 48px */
+
+  /* Font Weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Letter Spacing */
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-loose: 0.02em;
+
+  --ideal-container-width: calc(var(--font-size) * 80 * var(--font-ratio));
+  --container-width: min(100vw - 4rem, var(--ideal-container-width));
+  --gutter: calc((100vw - var(--container-width)) / 2);
+
+  /* https://hihayk.github.io/scale/#5/5/75/90/40/60/4/40/0C4A3C/13/75/18/black */
+
+  --brand-50: #e8ede7;
+  --brand-100: #bbcdbb;
+  --brand-200: #8fac94;
+  --brand-300: #638c72;
+  --brand-400: #386b55;
+  --brand-500: #0c4a3c; /*primary brand*/
+  --brand-600: #08412d;
+  --brand-700: #05371f;
+  --brand-800: #032d12;
+  --brand-900: #012209;
+  --brand-950: #001602;
+
+  --blue-50: #e9f5fe;
+  --blue-100: #c2e3fc;
+  --blue-200: #9bd1fa;
+  --blue-300: #74bff7;
+  --blue-400: #4dacf4;
+  --blue-500: #279af1;
+  --blue-600: #1a84d4;
+  --blue-700: #106db3;
+  --blue-800: #08578c;
+  --blue-900: #033f66;
+  --blue-950: #002840;
+
+  --bg-100: var(--brand-50);
+  --bg-200: var(--brand-100);
+  --primary-100: var(--brand-500);
+  --primary-200: var(--brand-600);
+  --text-100: var(--brand-950);
+  --text-200: var(--brand-700);
+  --accent-100: var(--blue-600);
+  --accent-200: var(--blue-800);
+}
+
+[data-theme="dark"] {
+  --bg-100: var(--brand-950);
+  --bg-200: var(--brand-800);
+  --primary-100: var(--brand-500);
+  --primary-200: var(--brand-400);
+  --text-100: var(--brand-100);
+  --text-200: var(--brand-200);
+  --accent-100: var(--blue-400);
+  --accent-200: var(--blue-200);
+}
+
+/* Padding */
+.p-1 {
+  padding: var(--space-1);
+}
+.p-2 {
+  padding: var(--space-2);
+}
+.p-3 {
+  padding: var(--space-3);
+}
+.p-4 {
+  padding: var(--space-4);
+}
+
+/* Padding Top */
+.pt-1 {
+  padding-top: var(--space-1);
+}
+.pt-2 {
+  padding-top: var(--space-2);
+}
+.pt-3 {
+  padding-top: var(--space-3);
+}
+.pt-4 {
+  padding-top: var(--space-4);
+}
+
+/* Padding Left */
+.pl-1 {
+  padding-left: var(--space-1);
+}
+.pl-2 {
+  padding-left: var(--space-2);
+}
+.pl-3 {
+  padding-left: var(--space-3);
+}
+.pl-4 {
+  padding-left: var(--space-4);
+}
+
+/* Padding Right */
+.pr-1 {
+  padding-right: var(--space-1);
+}
+.pr-2 {
+  padding-right: var(--space-2);
+}
+.pr-3 {
+  padding-right: var(--space-3);
+}
+.pr-4 {
+  padding-right: var(--space-4);
+}
+
+/* Padding Bottom */
+.pb-1 {
+  padding-bottom: var(--space-1);
+}
+.pb-2 {
+  padding-bottom: var(--space-2);
+}
+.pb-3 {
+  padding-bottom: var(--space-3);
+}
+.pb-4 {
+  padding-bottom: var(--space-4);
+}
+
+/* Margin */
+.m-0 {
+  margin: 0;
+}
+.m-1 {
+  margin: var(--space-1);
+}
+.m-2 {
+  margin: var(--space-2);
+}
+.m-3 {
+  margin: var(--space-3);
+}
+.m-4 {
+  margin: var(--space-4);
+}
+
+/* Margin Top */
+.mt-1 {
+  margin-top: var(--space-1);
+}
+.mt-2 {
+  margin-top: var(--space-2);
+}
+.mt-3 {
+  margin-top: var(--space-3);
+}
+.mt-4 {
+  margin-top: var(--space-4);
+}
+
+/* Margin Left */
+.ml-1 {
+  margin-left: var(--space-1);
+}
+.ml-2 {
+  margin-left: var(--space-2);
+}
+.ml-3 {
+  margin-left: var(--space-3);
+}
+.ml-4 {
+  margin-left: var(--space-4);
+}
+
+/* Margin Right */
+.mr-1 {
+  margin-right: var(--space-1);
+}
+.mr-2 {
+  margin-right: var(--space-2);
+}
+.mr-3 {
+  margin-right: var(--space-3);
+}
+.mr-4 {
+  margin-right: var(--space-4);
+}
+
+/* Margin Bottom */
+.mb-1 {
+  margin-bottom: var(--space-1);
+}
+.mb-2 {
+  margin-bottom: var(--space-2);
+}
+.mb-3 {
+  margin-bottom: var(--space-3);
+}
+.mb-4 {
+  margin-bottom: var(--space-4);
+}
+
+/*GAP*/
+.gap-1 {
+  gap: var(--space-1);
+}
+.gap-2 {
+  gap: var(--space-2);
+}
+.gap-3 {
+  gap: var(--space-3);
+}
+.gap-4 {
+  gap: var(--space-4);
+}
+
+.hidden {
+  display: none;
+}
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.justify-end {
+  justify-content: flex-end;
+}
+
+.items-center {
+  align-items: center;
+}
+.text-uppercase {
+  text-transform: uppercase;
+}
+.text-capitalize {
+  text-transform: capitalize;
+}
+body {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height);
+  font-weight: var(--font-weight-regular);
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-100);
+  color: var(--text-100);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+  max-width: var(--container-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding: var(--space-3);
+  overflow-x: hidden;
+}
+
+/* Global Typography */
+.text-body,
+body {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height);
+  color: var(--text-100); /* Adjust based on theme */
+}
+
+/* Headings */
+h1 {
+  font-size: var(--font-size-xxl);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+h2 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+h3 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+h4 {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+/* Paragraphs */
+p {
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+}
+
+/* Font Size Utilities */
+.text-xs {
+  font-size: var(--font-size-xs);
+}
+
+.text-sm {
+  font-size: var(--font-size-sm);
+}
+
+.text-md {
+  font-size: var(--font-size-md);
+}
+
+.text-lg {
+  font-size: var(--font-size-lg);
+}
+
+.text-xl {
+  font-size: var(--font-size-xl);
+}
+
+.text-2xl {
+  font-size: var(--font-size-xxl);
+}
+
+/* Font Weight Utilities */
+.font-regular {
+  font-weight: var(--font-weight-regular);
+}
+.font-semibold {
+  font-weight: var(--font-weight-semibold);
+}
+.font-medium {
+  font-weight: var(--font-weight-medium);
+}
+
+.font-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.text-btn,
+button,
+a {
+  font-family: var(--font-family-mono);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+button {
+  background-color: var(--text-100);
+  color: var(--bg-200);
+  padding: var(--space-2);
+  border-radius: var(--space-1);
+  border: none;
+  text-transform: uppercase;
+}
+
+button.secondary {
+  background-color: transparent;
+  color: var(--text-200);
+  border: 1px solid var(--text-200);
+}
+
+button.secondary:hover {
+  background-color: var(--bg-200);
+  color: var(--text-100);
+  border: 1px solid var(--text-100);
+}
+
+.text-btn:active,
+button:active,
+.text-btn:hover,
+button:hover {
+  color: var(--bg-100);
+  background-color: var(--text-200);
+}
+
+a {
+  color: var(--accent-100);
+}
+a:active,
+a:hover {
+  color: var(--accent-200);
+}
+
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+.flex-1 {
+  flex: 1;
+}
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.border {
+  border-width: 1px;
+}
+.transition-colors {
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke;
+}
+.duration-300 {
+  transition-duration: 300ms;
+}
+
+.ease-in-out {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate {
+  opacity: 0;
+  transform: translateY(0.75rem);
+  transition: all 300ms ease-out;
+}
+
+.animate.show {
+  opacity: 100;
+  transform: translateY(0);
+}
+
+.rotate-90 {
+  transform: rotate(90deg);
+}
+
+.link-arrow {
+  /* width: var(--space-4);
+  height: var(--space-4); */
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+}
+.link-arrow-right line {
+  transform: translateX(0.25rem) scaleX(0); /* translate-x-3 (0.75rem) and scale-x-0 */
+  transition: transform 300ms ease-in-out; /* duration-300 ease-in-out */
+}
+.link-arrow-right polyline {
+  transform: translateX(-0.25rem);
+  transition: transform 300ms ease-in-out; /* duration-300 ease-in-out */
+}
+.arrow-parent-right:hover line,
+.arrow-parent-right:focus line {
+  transform: translateX(0) scaleX(1);
+}
+.arrow-parent-right:hover polyline,
+.arrow-parent-right:focus polyline {
+  transform: translateX(0);
+}
+
+.link-arrow-left line {
+  transform: translateX(0.5rem) scaleX(0); /* translate-x-3 (0.75rem) and scale-x-0 */
+  transition: transform 300ms ease-in-out; /* duration-300 ease-in-out */
+}
+.link-arrow-left polyline {
+  transform: translateX(0.25rem);
+  transition: transform 300ms ease-in-out; /* duration-300 ease-in-out */
+}
+.arrow-parent-left:hover line,
+.arrow-parent-left:focus line {
+  transform: translateX(0) scaleX(1);
+}
+.arrow-parent-left:hover polyline,
+.arrow-parent-left:focus polyline {
+  transform: translateX(0);
+}
+
+.link-arrow-up line {
+  transform: translateX(0.625rem) scaleX(0); /* translate-x-3 (0.75rem) and scale-x-0 */
+  transition: transform 300ms ease-in-out; /* duration-300 ease-in-out */
+}
+.link-arrow-up polyline {
+  transform: translateX(0.125rem);
+  transition: transform 300ms ease-in-out; /* duration-300 ease-in-out */
+}
+.arrow-parent-up:hover line,
+.arrow-parent-up:focus line {
+  transform: translateX(0) scaleX(1);
+}
+.arrow-parent-up:hover polyline,
+.arrow-parent-up:focus polyline {
+  transform: translateX(0);
+}

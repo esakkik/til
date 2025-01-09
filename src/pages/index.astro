@@ -1,0 +1,68 @@
+---
+import { getCollection } from "astro:content";
+import TilLink from "@components/til_link.astro";
+import BaseLayout from "@layouts/base_layout.astro";
+import { GLOBAL } from "@constant";
+
+const tils = await getCollection("tils");
+tils.sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
+);
+---
+
+<BaseLayout title={GLOBAL.title} description={GLOBAL.description}>
+  <section>
+    <article class="animate">
+      <a class="header-link" href="#til-head"
+        ><h3 id="til-head" class="header">Today I Learned</h3></a
+      >
+      <p class="til-brief mt-2">
+        My real-time brain dump of learnings, daily discoveries, technical
+        epiphanies. This is raw, unfiltered knowledge-sharing – from "aha!"
+        moments to "note-to-self" reminders. It's learning, happening live and
+        in public inspired by Lee Byrons's <a href="https://leebyron.com/til/"
+          >til</a
+        > & <a href="https://www.swyx.io/learn-in-public">Learn in public</a> ethos
+      </p>
+    </article>
+  </section>
+  <section class="animate">
+    <a class="header-link" href="#til-head">
+      <h4 id="til-entry">Entry Log</h4>
+    </a>
+    <ul class="til-entry-list">
+      {
+        tils.map((til) => (
+          <li class="mb-3">
+            <TilLink entry={til} />
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</BaseLayout>
+
+<style is:inline>
+  .a {
+    word-spacing: 0%;
+  }
+  .header-link {
+    color: var(--text-100);
+    text-decoration: none;
+  }
+  .header-link:hover,
+  .header-link:active {
+    color: var(--text-100);
+    text-decoration: underline;
+  }
+  #til-head {
+    margin-top: 0;
+  }
+  .til-brief {
+    font-size: 0.865rem;
+  }
+  .til-entry-list {
+    list-style: none;
+    padding: 0;
+  }
+</style>

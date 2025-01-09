@@ -1,0 +1,56 @@
+---
+import type { CollectionEntry } from "astro:content";
+import ArrowRight from "@images/arrow-line-right.svg";
+
+type Props = {
+  entry: CollectionEntry<"tils">;
+};
+
+const { entry } = Astro.props;
+const date = new Date(entry.data.date).toLocaleDateString("en-us", {
+  year: "numeric",
+  month: "short",
+  day: "2-digit",
+});
+---
+
+<a
+  href={`${import.meta.env.BASE_URL}${entry.id}`}
+  class="til_link arrow-parent-right flex justify-between items-center p-2"
+>
+  <div class="flex flex-col flex-1 truncate">
+    <div class="text-sm text-uppercase">
+      {date}
+    </div>
+    <div class="font-semibold text-md">
+      {entry.data.title}
+    </div>
+    <!-- <div class="text-xs">
+      {entry.data.description}
+    </div> -->
+  </div>
+  <ArrowRight size={24} class="link-arrow link-arrow-right" />
+</a>
+
+<style is:inline>
+  .til_link {
+    border: 2px solid var(--bg-200);
+    display: flex;
+    border-radius: var(--space-1);
+    text-decoration: none;
+    color: var(--text-100);
+  }
+  .til_link:hover,
+  .til_link:active {
+    color: var(--text-200);
+  }
+  /* 
+  .til_link:hover line,
+  .til_link:focus line {
+    transform: translateX(0) scaleX(1);
+  }
+  .til_link:hover polyline,
+  .til_link:focus polyline {
+    transform: translateX(0);
+  } */
+</style>

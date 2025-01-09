@@ -1,0 +1,19 @@
+{
+  // Enable format on save
+  "editor.formatOnSave": true,
+
+  // Run ESLint to fix issues on save
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.fixAll.eslint": "explicit"
+  },
+
+  // Specific settings for Astro files
+  "prettier.documentSelectors": ["**/*.astro"],
+  "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // Disable conflicting Prettier rules in ESLint
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "astro"],
+}
