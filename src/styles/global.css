@@ -513,3 +513,11 @@ a:hover {
 .arrow-parent-up:focus polyline {
   transform: translateX(0);
 }
+
+/* CODE */
+
+.astro-code,
+code {
+  font-family: var(--font-family-mono);
+  padding: var(--space-4);
+}
